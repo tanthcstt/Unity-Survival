@@ -15,4 +15,8 @@ public class Arrow : MonoBehaviour
     {
         
     }
+    void Test()
+    {
+        Debug.Log("test git");
+    }
 }
