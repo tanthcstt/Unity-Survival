@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1803a2023fbb36d4a817e680ce2a8998, type: 3}
+  m_Name: Rope
+  m_EditorClassIdentifier: 
+  obj: {fileID: 1000296404740327957, guid: d0d5de7063a5dbd49a6c508bb6d4f782, type: 3}
+  itemSprite: {fileID: 21300000, guid: 52964c53e1132f04eb83e4f163cc278c, type: 3}
+  itemID: 5
+  itemName: Rope
+  maxAmount: 3
+  itemAmount: 0
+  hotbarAmount: 0
+  inventoryAmount: 0
+  stackNum: 0
+  stackable: 1
+  isMaterial: 1
