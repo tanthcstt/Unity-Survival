@@ -18,6 +18,7 @@ public class Shooting : MonoBehaviour
     protected GameObject projectilePrefab;
     protected Transform aim;
     protected Transform hand;
+    public Camera cam;  
 
 
     // get bullet or arrow
@@ -44,9 +45,10 @@ public class Shooting : MonoBehaviour
     {
         projectileSpawnerTrans = this.transform.Find("BulletSpawner");
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnerTrans.position, transform.rotation);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();        
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        rb.velocity = ray.direction * 100f;
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        /*     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);*/
+
+        rb.velocity = transform.forward * 100f;
  
         projectile.GetComponent<Projectile>().isActive = true;
        // set projective can do damage
@@ -72,6 +74,7 @@ public class Shooting : MonoBehaviour
         // aiming transform
         aim = GameObject.Find("FPP_Player/Main Camera/AimPosition").transform;
         hand = GameObject.Find("FPP_Player/Hand").transform;
+        cam = GameObject.Find("FPP_Player/Main Camera").GetComponent<Camera>();
     }
 
 
