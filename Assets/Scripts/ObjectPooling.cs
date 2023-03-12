@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour
 {
+    public static ObjectPooling instance;
     public Transform pool;
-    private void Start()
+    private void Awake()
     {
-      
+        instance = this;    
     }
-    public void SetParent(GameObject obj)
-    {
-        obj.transform.SetParent(this.pool);
-        obj.SetActive(false);
 
-    } 
 
-   /* public void GetItemFromList(GameObject obj, List<GameObject> pool)
-    {
 
-    }*/
-    public void GetFromPool()
-    {
-
-    }
-    protected void SetPool(Transform pool)
+    public void SetPool(Transform pool)
     {
         this.pool = pool;
     }
 
-  
+    public void AddToPool(Transform spawner)
+    {
+        while (spawner.childCount > 0)
+        {
+            spawner.GetChild(0).gameObject.SetActive(false);
+            spawner.GetChild(0).transform.SetParent(this.pool);
+        }
+    }
+
+
 }

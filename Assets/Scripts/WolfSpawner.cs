@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class WolfSpawner : AnimalsSpawner
 {
-    public WolfPooling wolfPooling;
+ 
     public GameObject wolfPrefab;
-    public List<Terrain> terrainList = new List<Terrain>();
-    public DayNightCycle daynightCycle;
-    public bool isSpawn;
-    public bool isDespawn;
+    public Transform wolfPooling;
+    public bool isSpawned;
+    public bool isDespawned;
    
     private void Update()
     {
         if (daynightCycle.isDay)
         {
-            isSpawn = false;
-            isDespawn = false;  
+            isSpawned = false;
+            isDespawned = false;  
         }
-        if (!daynightCycle.isDay && !isSpawn)
+        if (!daynightCycle.isDay && !isSpawned)
         {
-            int amountToSpawn = 0;
+            
             foreach(Terrain terrain in terrainList)
             {
                 base.SetTerrain(terrain);
                 base.SetNoiseMap();
-                base.Spawn(wolfPrefab, transform, wolfPooling.transform);
-                amountToSpawn++;    
+                base.Spawn(wolfPrefab, transform, wolfPooling);
+                
 
             }
-            isSpawn = true; 
+            isSpawned = true; 
             
         }
      /*   if (Input.GetKeyDown(KeyCode.P))
         {
             wolfPooling.AddToPool(transform);
         }*/
-        if (daynightCycle.isDay && !isDespawn)
+        if (daynightCycle.isDay && !isDespawned)
         {
-            wolfPooling.AddToPool(transform);
-            isDespawn = true;
+            ObjectPooling.instance.SetPool(wolfPooling);
+            ObjectPooling.instance.AddToPool(transform);
+            isDespawned = true;
         }
 
        

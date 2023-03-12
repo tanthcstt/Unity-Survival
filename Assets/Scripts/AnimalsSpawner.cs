@@ -14,7 +14,8 @@ public class AnimalsSpawner : MonoBehaviour
     protected float scale = 25f;
     public Terrain spawnRange;
     public Texture2D noiseMap;
-   
+    public List<Terrain> terrainList = new List<Terrain>();
+    public DayNightCycle daynightCycle;
     public Texture2D NoiseMap()
     {
         width = (int)spawnRange.terrainData.size.x;
