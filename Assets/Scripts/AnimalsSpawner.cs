@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using UnityEngine.AI;
 
 public class AnimalsSpawner : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class AnimalsSpawner : MonoBehaviour
     }
     public void Spawn(GameObject animalPrefab, Transform parent, Transform pool)
     {
+       
         for (int x = 0; x < spawnRange.terrainData.size.x; x += 7)
         {
             for (int z = 0; z < spawnRange.terrainData.size.z; z += 7)
@@ -54,8 +56,10 @@ public class AnimalsSpawner : MonoBehaviour
                    
                     if (pool.childCount == 0)
                     {
+                        Vector3 spawnPos = SpawnPosition(x, z);
+                        if (!IsAgentOnNavMesh(spawnPos)) return;
                         // instantiate
-                        Instantiate(animalPrefab, SpawnPosition(x,z),Quaternion.identity ,parent);
+                        Instantiate(animalPrefab, spawnPos,Quaternion.identity ,parent);
                     } else
                     {
                         // set avtive && pos
@@ -79,6 +83,12 @@ public class AnimalsSpawner : MonoBehaviour
     {
         this.noiseMap = NoiseMap();
     }
-
+    public bool IsAgentOnNavMesh(Vector3 pos)
+    {
+        if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 1f, NavMesh.AllAreas)) {
+            return true;
+        }
+        return false;
+    }
   
 }

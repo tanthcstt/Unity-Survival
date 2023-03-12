@@ -3,11 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class AnimalsBehaviour : MonoBehaviour
 {
     public float activeRange;
+    public NavMeshAgent agent;
 
     public Vector3 targetPoint;
     public Transform centerPoint;

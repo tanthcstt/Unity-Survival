@@ -7,7 +7,6 @@ using UnityEngine.AI;
 
 public class DeerBehaviour : AnimalsBehaviour
 {
-    public NavMeshAgent agent;
     public float escapeRange;
     public float idleRange;
     public float escapeSpeed;
@@ -33,7 +32,7 @@ public class DeerBehaviour : AnimalsBehaviour
     }
     public void Idle()
     {
-        agent.speed = 6f;
+        agent.speed = 3f;
         base.SetTagetPoint(idleRange);
         agent.SetDestination(base.targetPoint);
     }
