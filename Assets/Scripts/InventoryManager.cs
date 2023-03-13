@@ -29,6 +29,8 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        AddNullItem(hotbarList, 8);
+        AddNullItem(invetoryList, 31);
     }
     
 
@@ -36,8 +38,7 @@ public class InventoryManager : MonoBehaviour
     // Add item controller
     public void AddItemController(GeneralItemData itemData)
     {
-        AddNullItem(hotbarList, 8);
-        AddNullItem(invetoryList, 31);
+      
         if (ItemCount(hotbarList) < 8 || (ItemCount(hotbarList) >= 8 && !StackableItemFull(hotbarList, itemData)))
         {
             // add to hot bar

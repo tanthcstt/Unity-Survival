@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     public GameObject interactionNotification;
     public GameObject itemUI;
     public GameObject tradingUI;
-
+    
     public Camera cam;
     public Transform chestContent;
 
@@ -20,6 +20,8 @@ public class UIController : MonoBehaviour
     public KeyCode interactionKey = KeyCode.F;
     public KeyCode craftingKey = KeyCode.I;
     public LayerMask interactiveLayer;
+
+    public bool isUIOn;
     private void Start()
     {
         inventoryUI.SetActive(false);
@@ -64,6 +66,11 @@ public class UIController : MonoBehaviour
 
     private void ToggleByKey(GameObject UI)
     {
+        if (UI.activeSelf)
+        {
+            isUIOn = true;
+        }
+        else isUIOn = false;
         UI.SetActive(!UI.activeSelf);
     } 
 
@@ -73,10 +80,21 @@ public class UIController : MonoBehaviour
         {
             //open chest UI
             chestUI.SetActive(!chestUI.activeSelf);
+            if (chestUI.activeSelf)
+            {
+                isUIOn = true;
+            }
+            else isUIOn = false;
+
         } else if (layerIndex == LayerMask.NameToLayer("SpaceShip"))
         {
             repaireShipUI.SetActive(!repaireShipUI.activeSelf);
-        }
+            if (repaireShipUI.activeSelf)
+            {
+                isUIOn = true;
+            }
+            else isUIOn = false;
+        } 
                
     }
 
@@ -97,4 +115,6 @@ public class UIController : MonoBehaviour
         
         InventoryManager.Instance.InitializeItemUI(ChestManager.Instance.chestList, chestContent, 0, 31, itemUI);
     }
+
+   
 }

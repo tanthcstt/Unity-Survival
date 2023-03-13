@@ -11,9 +11,9 @@ public class AnimalsBehaviour : MonoBehaviour
     public float activeRange;
     public NavMeshAgent agent;
 
-    public Vector3 targetPoint;
-    public Transform centerPoint;
-    public bool isSetTargetPoint;
+    protected Vector3 targetPoint;
+    protected Transform centerPoint;
+    protected bool isSetTargetPoint;
     public LayerMask playerLayer;
     public GameObject player;
     private void Awake()
