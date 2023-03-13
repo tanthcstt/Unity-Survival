@@ -65,13 +65,13 @@ public class UIController : MonoBehaviour
     }
 
     private void ToggleByKey(GameObject UI)
-    {
+    {        
+        UI.SetActive(!UI.activeSelf);
         if (UI.activeSelf)
         {
             isUIOn = true;
         }
         else isUIOn = false;
-        UI.SetActive(!UI.activeSelf);
     } 
 
     public void ToggleByRaycast(int layerIndex)
@@ -80,20 +80,12 @@ public class UIController : MonoBehaviour
         {
             //open chest UI
             chestUI.SetActive(!chestUI.activeSelf);
-            if (chestUI.activeSelf)
-            {
-                isUIOn = true;
-            }
-            else isUIOn = false;
+           
 
         } else if (layerIndex == LayerMask.NameToLayer("SpaceShip"))
         {
             repaireShipUI.SetActive(!repaireShipUI.activeSelf);
-            if (repaireShipUI.activeSelf)
-            {
-                isUIOn = true;
-            }
-            else isUIOn = false;
+         
         } 
                
     }

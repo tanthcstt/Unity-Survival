@@ -63,7 +63,7 @@ public class FPP_Interaction : MonoBehaviour
         staminaBar.SetMaxStamina(maxStamina);
 
         selectedItemID = -1;
-
+        itemInHand = null;
 
 
     }
@@ -122,7 +122,8 @@ public class FPP_Interaction : MonoBehaviour
                     }
                 } else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("InteractiveObject") && hit.collider.CompareTag("CampFire"))
                 {
-                   
+                    if (itemInHand == null) return;
+                    if (!itemInHand.GetComponent<GeneralItemData>().item.isCookable) return;
                     cooking.Cook();
                   
                 } 
@@ -205,7 +206,7 @@ public class FPP_Interaction : MonoBehaviour
                             itemInHand = InventoryManager.Instance.hotbarList[j].gameObject;
 
                             if (InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>() &&
-                                InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>().item.isShootable)
+                                InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>().item.isDoDamage)
                             {
                                 EnableDoDamageItem(InventoryManager.Instance.hotbarList[j]);
                             }
@@ -216,7 +217,7 @@ public class FPP_Interaction : MonoBehaviour
                         else
                         {
                             if (InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>() &&
-                              InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>().item.isShootable)
+                              InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>().item.isDoDamage)
                             {
                                 
                                 DisableDoDamageItem(InventoryManager.Instance.hotbarList[j]);
@@ -247,15 +248,25 @@ public class FPP_Interaction : MonoBehaviour
             breakObj.Break(breakableObjData, selectedItemID);
         }
     }
+
+    // need to optimize
     void EnableDoDamageItem(GeneralItemData itemData) // equiped if item can do damage;
     {
-        Shooting doDamage = itemData.GetComponent<Shooting>();  
-        doDamage.isEquiped = true;
+        Shooting shootingWeapon = itemData.gameObject.GetComponent<Shooting>();
+        MeleeWeapom meleeWeapom = itemData.gameObject.GetComponent<MeleeWeapom>();
+        
+        if (shootingWeapon == null && meleeWeapom == null) return;
+        if (shootingWeapon) shootingWeapon.isEquiped = true;
+        if (meleeWeapom) meleeWeapom.isEquiped = true;
     }
     void DisableDoDamageItem(GeneralItemData itemData) // equiped if item can do damage;
     {
-        Shooting doDamage = itemData.GetComponent<Shooting>();
-        doDamage.isEquiped = false;
+        Shooting shootingWeapon = itemData.gameObject.GetComponent<Shooting>();
+        MeleeWeapom meleeWeapom = itemData.gameObject.GetComponent<MeleeWeapom>();
+        if (shootingWeapon == null && meleeWeapom == null) return;
+        if (shootingWeapon) shootingWeapon.isEquiped = false;
+        if (meleeWeapom) meleeWeapom.isEquiped = false;
+
     }
 
     private void HandReset()

@@ -5,13 +5,20 @@ using UnityEngine;
 
 public class DamageSender :MonoBehaviour
 {
-
+   
+    public Transform cam;
     // send damage to damage receiver obj
     protected int damage;
 
     public virtual void Awake()
     {
-        this.SetDamage();
+        LoadComponent();        
+        SetDamage();
+        
+    }
+    public void LoadComponent()
+    {
+        cam = GameObject.Find("FPP_Player/Main Camera").transform;
     }
     public virtual void Send(GameObject objToSend)
     {

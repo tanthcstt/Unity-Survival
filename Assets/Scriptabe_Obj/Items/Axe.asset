@@ -18,7 +18,13 @@ MonoBehaviour:
   itemName: Axe
   maxAmount: 3
   itemAmount: 0
-  hotbarAmount: 0
-  inventoryAmount: 0
-  stackNum: 0
   stackable: 1
+  itemDamage: 3
+  isShootable: 0
+  isDoDamage: 1
+  arrows_bullets: []
+  isMaterial: 0
+  isConsumable: 0
+  isCookable: 0
+  cookedItem: {fileID: 0}
+  price: 0

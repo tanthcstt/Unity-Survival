@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -627.98376
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 18.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -466.65018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_Name
-      value: Axe
+      value: Axe (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       propertyPath: m_Layer
@@ -77,6 +77,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2739275259364008382}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6851080587125541939}
   m_SourcePrefab: {fileID: 100100000, guid: d00b0288a7db18d4c97bc8cd5ae7dc94, type: 3}
 --- !u!1 &4398400845080492912 stripped
 GameObject:
@@ -127,7 +130,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -147,3 +150,18 @@ MonoBehaviour:
   itemCount: 0
   isFullStacked: 0
   power: 10
+--- !u!114 &6851080587125541939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398400845080492912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecc34fc000e8b54c948dacf9ee2c829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  isEquiped: 0
+  attackDistance: 5
