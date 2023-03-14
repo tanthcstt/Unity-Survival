@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Projectile : DamageSender
+public class Projectile :MonoBehaviour
 {
     public bool isActive;
     public bool isDisappear;
@@ -13,16 +13,16 @@ public class Projectile : DamageSender
     /// destroy if projectile is bullet
     /// </summary>
 
-    public override void Awake()
+    public void Awake()
     {
-        base.Awake();
-        this.SetProjectileType();     
+      
+        SetProjectileType();     
         
        
     }
     protected void SetProjectileType()
     {
-        if (this.GetComponent<GeneralItemData>().item.itemID == 10)
+        if (gameObject.GetComponent<GeneralItemData>().item.itemID == 10)
         {
             isDisappear = true;
         }
@@ -32,7 +32,7 @@ public class Projectile : DamageSender
     {
         if (isActive && (collision.gameObject.layer != LayerMask.NameToLayer("Player") && collision.gameObject.layer != LayerMask.NameToLayer("Items")))
         {
-            this.SendDamage(collision);
+            SendDamage(collision);
             if (isDamageSent)
             {
                 if (isDisappear)
@@ -51,7 +51,7 @@ public class Projectile : DamageSender
     {
         if (isActive)
         {
-            base.Send(collision.collider.gameObject);
+            DamageSender.instance.DoDamage(gameObject.GetComponent<GeneralItemData>().item.itemDamage, collision.collider.gameObject);
             isActive = false;
         }
         isDamageSent = true;
@@ -59,12 +59,12 @@ public class Projectile : DamageSender
     }
     private void SetProjectileParent(Collision collision) // attach arrow on ocject that hit
     {
-        this.transform.SetParent(collision.transform);
-        this.GetComponent<Rigidbody>().isKinematic = true;
+        transform.SetParent(collision.transform);
+        GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private void ProjectileDisappear()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

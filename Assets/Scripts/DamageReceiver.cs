@@ -36,11 +36,12 @@ public class DamageReceiver : MonoBehaviour
     }
     public void Dead()
     {
-        if (gameObject.GetComponent<BreakableObjData>().generalData.DropObj)
+        if (gameObject.GetComponent<BreakableObjData>())
         {    
             GameObject dropObj = gameObject.GetComponent<BreakableObjData>().generalData.DropObj;
-            Instantiate(dropObj, transform.position, transform.rotation);
+            if (dropObj) Instantiate(dropObj, transform.position, transform.rotation);
         }
+       
         gameObject.SetActive(false);
     }
 }

@@ -10,4 +10,6 @@ public class BreakableObject : ScriptableObject
     public GameObject DropObj;
     public bool isHaveBrokenObj;
     public GameObject BrokenObj;
+    // damage if it is animal
+    public int damage;
 }

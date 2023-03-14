@@ -5,22 +5,29 @@ using UnityEngine;
 
 public class DamageSender :MonoBehaviour
 {
-   
+    public static DamageSender instance;    
     public Transform cam;
     // send damage to damage receiver obj
     protected int damage;
 
     public virtual void Awake()
     {
+        instance = this;      
         LoadComponent();        
-        SetDamage();
         
     }
     public void LoadComponent()
     {
         cam = GameObject.Find("FPP_Player/Main Camera").transform;
     }
-    public virtual void Send(GameObject objToSend)
+
+    public void DoDamage(int damage, GameObject objToSend)
+    {
+        SetDamage(damage);
+        Send(objToSend);
+    }
+
+    protected virtual void Send(GameObject objToSend)
     {
         Debug.Log(objToSend);   
         DamageReceiver receiver = objToSend.transform.GetComponentInParent<DamageReceiver>();
@@ -30,9 +37,9 @@ public class DamageSender :MonoBehaviour
         receiver.Receive(damage);       
     }
 
-    public virtual void SetDamage()
+    protected virtual void SetDamage(int damage)
     {
-        this.damage = gameObject.GetComponent<GeneralItemData>().item.itemDamage;
+        this.damage = damage;
     }
 
  

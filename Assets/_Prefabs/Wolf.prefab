@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3b490a4d84425ee43b11f43d3ce12507, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b490a4d84425ee43b11f43d3ce12507, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1053.7052
+      value: -407.02133
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b490a4d84425ee43b11f43d3ce12507, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.674683
+      value: 82.16078
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b490a4d84425ee43b11f43d3ce12507, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -415.45187
+      value: -319.59827
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b490a4d84425ee43b11f43d3ce12507, type: 3}
       propertyPath: m_LocalRotation.w
@@ -142,13 +142,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeRange: 0
   agent: {fileID: 8459063881240743981}
-  targetPoint: {x: 0, y: 0, z: 0}
-  centerPoint: {fileID: 0}
-  isSetTargetPoint: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 0}
+  damageSender: {fileID: 0}
+  attackRange: 2
   patrollingRange: 10
   chasingRange: 30
   chasingSpeed: 8

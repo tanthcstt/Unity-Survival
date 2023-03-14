@@ -5,19 +5,28 @@ using UnityEngine.AI;
 
 public class WolfBehaviour : AnimalsBehaviour
 {
-    public DamageSender damageSender;
+   
     public float attackRange;
     public float patrollingRange;
     public float chasingRange;
     public float chasingSpeed = 8f;
+    public int damage;
+    private void Awake()
+    {
+        damage = gameObject.GetComponent<BreakableObjData>().generalData.damage;  
+    }
     private void Update()
     {
+        if (IsInActiveRange(attackRange))
+        {
+            Attack();
+            return;
+        }
         if (base.IsInActiveRange(chasingRange))
         {
             this.Chasing();
         }
         else this.Patrolling();
-        if (IsInActiveRange(attackRange)) Attack();
     }
 
     public void Patrolling()
@@ -35,12 +44,12 @@ public class WolfBehaviour : AnimalsBehaviour
     {   // raycast
         // send damage
         Debug.Log("attack");
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 2f))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 2f, base.playerLayer))
         {
             DamageReceiver damageReceiver = hit.collider.gameObject.GetComponent<DamageReceiver>();
             if (damageReceiver != null)
             {
-                damageSender.Send(hit.collider.gameObject);
+                DamageSender.instance.DoDamage(damage, hit.collider.gameObject);
             }
         }
     }

@@ -37,6 +37,7 @@ public class PlayerHealth : DamageReceiver
 
     public override void Awake()
     {
+     
         base.maxHealth = 100;
         base.Awake();
         this.LoadComponent();
@@ -101,8 +102,6 @@ public class PlayerHealth : DamageReceiver
             maxTime -= 2f; // make player take damage faster
             time = 0;            
         }
-    
-   
     }
     
     private void SetPlayerState()
@@ -131,4 +130,6 @@ public class PlayerHealth : DamageReceiver
         if (parameterToIncrease == thirstyTime) isThirsty = false;
         if (parameterToIncrease == hungryTime) isHungry = false;
    }
+
+   
 }

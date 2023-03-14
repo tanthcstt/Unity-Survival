@@ -18,9 +18,14 @@ MonoBehaviour:
   itemName: Bow
   maxAmount: 3
   itemAmount: 0
+  stackable: 0
   itemDamage: 0
   isShootable: 1
+  isDoDamage: 1
   arrows_bullets:
   - {fileID: 9108856331676146900, guid: d8906256d083d7347a9dcc4d6a6722d6, type: 3}
-  stackable: 0
   isMaterial: 0
+  isConsumable: 0
+  isCookable: 0
+  cookedItem: {fileID: 0}
+  price: 0
