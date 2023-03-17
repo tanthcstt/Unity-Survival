@@ -11,8 +11,9 @@ public class WolfBehaviour : AnimalsBehaviour
     public float chasingRange;
     public float chasingSpeed = 8f;
     public int damage;
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();   
         damage = gameObject.GetComponent<BreakableObjData>().generalData.damage;  
     }
     private void Update()

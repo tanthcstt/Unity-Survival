@@ -10,8 +10,7 @@ public class FPP_Controller : MonoBehaviour
     public LayerMask enviroment;
     public Transform cam;
     public StaminaBar staminaBar;
-
-
+    public GameDataManager gameDataManager;
     
     private float speed = 10f;
     private float walk_speed = 10f;
@@ -28,20 +27,15 @@ public class FPP_Controller : MonoBehaviour
     public KeyCode jumb = KeyCode.Space;
     public KeyCode sprint = KeyCode.LeftShift;
     public KeyCode skill_3 = KeyCode.Alpha3;
+
  
-    
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
+
+
+
     // Update is called once per frame
     void Update()
     {   
-        
+      
         //character Movement
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");

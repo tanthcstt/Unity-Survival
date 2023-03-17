@@ -16,7 +16,7 @@ public class AnimalsBehaviour : MonoBehaviour
     protected bool isSetTargetPoint;
     public LayerMask playerLayer;
     public GameObject player;
-    private void Awake()
+    public virtual void Awake()
     {
         player = GameObject.Find("FPP_Player");
     }

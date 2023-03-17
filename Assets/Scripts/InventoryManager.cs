@@ -32,7 +32,7 @@ public class InventoryManager : MonoBehaviour
         AddNullItem(hotbarList, 8);
         AddNullItem(invetoryList, 31);
     }
-    
+  
 
     
     // Add item controller
