@@ -14,24 +14,14 @@ public class CraftingUI : MonoBehaviour
     public Transform craftingUIContent;
     
     public KeyCode craftingKey = KeyCode.I;
-    private bool isOpen;
+
 
     public CraftingController craftingController;
     private void Start()
-    {
-        isOpen = false;
-        craftingUI.SetActive(isOpen);
+    {        
         AddCraftingItemListener();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(craftingKey))
-        {
-            craftingUI.SetActive(!isOpen);           
-            isOpen = !isOpen;
-        } 
-       
-    }
+
 
     public void AddCraftingItemListener()
     {
@@ -43,11 +33,9 @@ public class CraftingUI : MonoBehaviour
     }
 
     public void HideCraftingUI()
-    {
-        isOpen = false;
-        craftingUI.SetActive(false);       
-
-
+    {    
+        craftingUI.SetActive(false);    
+  
     }
    
 

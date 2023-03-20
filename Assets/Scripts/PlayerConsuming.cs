@@ -8,9 +8,9 @@ public class PlayerConsuming : MonoBehaviour
     public List<GeneralItemData> consumeList = new List<GeneralItemData>();
     public PlayerHealth playerHealth;
     [Header("item increasing amount")]
-    public float food = 3f;
-    public float drink = 2f;
-    public float medKit = 10f;
+    public float food = 10f;
+    public float drink = 10f;
+    public float medKit = 40f;
     private void Awake()
     {
         consumeList.Add(null);

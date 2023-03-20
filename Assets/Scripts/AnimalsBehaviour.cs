@@ -34,7 +34,8 @@ public class AnimalsBehaviour : MonoBehaviour
         targetPoint = new Vector3(centerPoint.position.x + randomX, transform.position.y, centerPoint.position.z + randomZ);
         isSetTargetPoint = true;
     }
- 
+
+
     public bool IsReachTagetPoint()
     {
         Vector3 distanceToWalkPoint = targetPoint - centerPoint.position;

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    
     public GameObject inventoryUI;
     public GameObject chestUI;
     public GameObject repaireShipUI;
@@ -12,6 +13,7 @@ public class UIController : MonoBehaviour
     public GameObject interactionNotification;
     public GameObject itemUI;
     public GameObject tradingUI;
+    public GameObject pauseUI;
     
     public Camera cam;
     public Transform chestContent;
@@ -19,6 +21,7 @@ public class UIController : MonoBehaviour
     public KeyCode inventoryKey = KeyCode.B;
     public KeyCode interactionKey = KeyCode.F;
     public KeyCode craftingKey = KeyCode.I;
+    public KeyCode pauseKey = KeyCode.Escape;
     public LayerMask interactiveLayer;
 
     public bool isUIOn;
@@ -28,6 +31,7 @@ public class UIController : MonoBehaviour
         chestUI.SetActive(false);
         repaireShipUI.SetActive(false);
         craftingUI.SetActive(false);
+        pauseUI.SetActive(false);   
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
@@ -36,35 +40,29 @@ public class UIController : MonoBehaviour
     }
     private void Update()
     {
+        CursorToggle();
+
+        if (Input.GetKeyDown(pauseKey)) ToggleByKey(pauseUI);
+        if (pauseUI.activeSelf) return;
+        
         if (Input.GetKeyDown(inventoryKey))
         {
             ToggleByKey(inventoryUI);
         } else if (Input.GetKeyDown(craftingKey)) {
             ToggleByKey(craftingUI);
-        }
+        }  
+
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 5f, interactiveLayer))
         {
             if (!hit.transform.CompareTag("Trader")) return;
             if (Input.GetKeyDown(interactionKey)) ToggleByKey(tradingUI);
         }
+        
 
-        //cursor visible and unlock when at least 1 ui active
-        if (inventoryUI.activeSelf || 
-            chestUI.activeSelf || 
-            repaireShipUI.activeSelf || 
-            craftingUI.activeSelf || 
-            tradingUI.activeSelf)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        } else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+      
     }
 
-    private void ToggleByKey(GameObject UI)
+    public void ToggleByKey(GameObject UI)
     {        
         UI.SetActive(!UI.activeSelf);
         if (UI.activeSelf)
@@ -108,5 +106,19 @@ public class UIController : MonoBehaviour
         InventoryManager.Instance.InitializeItemUI(ChestManager.Instance.chestList, chestContent, 0, 31, itemUI);
     }
 
+    public void CursorToggle()
+    {
+        //cursor visible and unlock when at least 1 ui active
+        if (isUIOn)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
    
 }

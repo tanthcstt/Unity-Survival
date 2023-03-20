@@ -24,15 +24,9 @@ public class GameDataManager : MonoBehaviour
     }
     private void Start()
     {
-        loadGame.SetData();
+        loadGame.SetData();       
     }
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            saveGame.Save();
-        }   
-    }
+
    
    
     public void GetData()

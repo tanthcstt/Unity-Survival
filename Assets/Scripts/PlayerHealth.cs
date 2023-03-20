@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : DamageReceiver
 {
     [Header("player parameters")]
-   
+    public GameObject deathCam;
 
     [Header("cold")]
     public float coldTime;
@@ -60,6 +61,8 @@ public class PlayerHealth : DamageReceiver
 
         isHungry = false;
         isThirsty = false;
+
+        deathCam.SetActive(false);
     }
 
 
@@ -87,9 +90,10 @@ public class PlayerHealth : DamageReceiver
         this.DoDamageByRuntime(ref hungryTime, ref maxHungryTime,  ref hungryDamage);
         this.DoDamageByRuntime(ref thirstyTime, ref maxThirstyTime,  ref thirstyDamage);
         this.UpdateUI();
+
     }
 
-
+ 
 
     private void DoDamageByRuntime(ref float time, ref float maxTime, ref float damage)
     {
@@ -98,7 +102,7 @@ public class PlayerHealth : DamageReceiver
         if (time  >= maxTime)
         {
             this.SetPlayerState();   
-            base.Receive((int)damage);
+            this.Receive((int)damage);
             maxTime -= 2f; // make player take damage faster
             time = 0;            
         }
@@ -130,6 +134,18 @@ public class PlayerHealth : DamageReceiver
         if (parameterToIncrease == thirstyTime) isThirsty = false;
         if (parameterToIncrease == hungryTime) isHungry = false;
    }
+    public override void Receive(int damage)
+    {
+        base.Hurt(damage);
+        Debug.Log("- " + damage + " " + gameObject.name);
+        if (IsDeath(base.health))
+        {
+            // player death
+            deathCam.SetActive(true);
+            deathCam.transform.parent = null;   
+            gameObject.SetActive(false);
+           
+        }
+    }
 
-   
 }

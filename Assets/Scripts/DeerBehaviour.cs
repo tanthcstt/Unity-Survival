@@ -28,6 +28,7 @@ public class DeerBehaviour : AnimalsBehaviour
         this.SetTagetPoint(escapeRange);
         agent.speed = escapeSpeed;
         agent.SetDestination(base.targetPoint);
+   
 
     }
     public void Idle()
@@ -35,6 +36,7 @@ public class DeerBehaviour : AnimalsBehaviour
         agent.speed = 3f;
         base.SetTagetPoint(idleRange);
         agent.SetDestination(base.targetPoint);
+       
     }
 
     public override void SetTagetPoint(float range)
