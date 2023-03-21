@@ -39,6 +39,7 @@ public class FPP_Interaction : MonoBehaviour
     public BreakObj breakObj;
     public UIController UIController;
     public Cooking cooking;
+    public HelicopterKeyRequire helicopterKey;
 
     Rigidbody itemRb;
   
@@ -126,7 +127,10 @@ public class FPP_Interaction : MonoBehaviour
                     if (!itemInHand.GetComponent<GeneralItemData>().item.isCookable) return;
                     cooking.Cook();
                   
-                } 
+                }  else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("InteractiveObject") && hit.transform.gameObject.CompareTag("Helicopter"))
+                {
+                    helicopterKey.Unlock();
+                }
 
 
              

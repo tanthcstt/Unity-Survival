@@ -7,6 +7,7 @@ TagManager:
   - Chest
   - CampFire
   - Trader
+  - Helicopter
   layers:
   - Default
   - TransparentFX
