@@ -8,47 +8,46 @@ public class Cooking : MonoBehaviour
     protected int childIndex;
     protected Transform hand;
     public ItemInteractions itemInteractions;
-    public List<GeneralItemData> cookingList = new List<GeneralItemData>();
-    protected GameObject cookedItem;
+    public GameObject cookedItem;
+    public List<GeneralItemData> rawFoodList = new List<GeneralItemData>();
+    public GameObject rawFoodPrefabs;
+   
+  
     private void Awake()
     {
         hand = GameObject.Find("FPP_Player/Hand").transform;
+        SetRawFoodList();
+      
     }
     public void Cook()
     {
-        SetCookingList();
-        ChangeFood();
-        AddToInventory();
-    }
-    protected void SetCookingList()
-    {
-        for (int i = 0; i < hand.childCount; i++)
+        rawFoodList[0].itemCount = 1;
+        if (ItemFilter.Instance.IsEnoughItems(rawFoodList))
         {
-            Debug.Log(hand.GetChild(i).gameObject.activeSelf);
-            if (!hand.GetChild(i).gameObject.activeSelf) break;
-            if (!hand.GetChild(i).GetComponent<GeneralItemData>().item.isCookable) break;  
-            childIndex = i; 
-            GeneralItemData cookingItemData = hand.GetChild(i).GetComponent<GeneralItemData>();
-            cookingList.Add(cookingItemData);
+            ChangeFood();
+            AddToInventory();   
         }
-    }   
+       
+    }
+
     protected void ChangeFood()
     {
-        cookingList[0].itemCount = 1;
-        if (ItemFilter.Instance.IsEnoughItems(cookingList))
-        {
-        
-            DestroyImmediate(hand.GetChild(childIndex).gameObject);
-            cookedItem = Instantiate(cookingList[0].item.cookedItem, hand.transform.position, hand.transform.rotation);
-            cookedItem.transform.SetParent(hand.transform);
-            cookedItem.GetComponent<Rigidbody>().isKinematic = true;
-            cookedItem.transform.SetSiblingIndex(childIndex);
 
-        }
+        cookedItem = Instantiate(rawFoodList[0].item.cookedItem, hand.transform.position, hand.transform.rotation);
+        cookedItem.transform.SetParent(hand.transform);
+        cookedItem.GetComponent<Rigidbody>().isKinematic = true;
       
+
+
     }
     protected void AddToInventory()
     {
         itemInteractions.PickUp(cookedItem.GetComponent<GeneralItemData>());
+    }
+    protected void SetRawFoodList()
+    {
+        GameObject rawFood = Instantiate(rawFoodPrefabs, new Vector3(0,0,0), Quaternion.identity);
+        rawFoodList.Add(rawFood.GetComponent<GeneralItemData>());
+      
     }
 }

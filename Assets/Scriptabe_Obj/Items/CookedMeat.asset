@@ -18,10 +18,13 @@ MonoBehaviour:
   itemName: Cooked Meat
   maxAmount: 3
   itemAmount: 0
+  stackable: 0
   itemDamage: 0
   isShootable: 0
   isDoDamage: 0
   arrows_bullets: []
-  stackable: 0
   isMaterial: 0
   isConsumable: 1
+  isCookable: 0
+  cookedItem: {fileID: 0}
+  price: 0
