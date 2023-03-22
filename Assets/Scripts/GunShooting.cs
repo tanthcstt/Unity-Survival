@@ -45,14 +45,8 @@ public class GunShooting : Shooting
             }
 
         }
-        if (isEquiped && Input.GetMouseButtonDown(1))
-        {
-            base.WeaponStatus(base.aim); // aiming
-        }
-        if (isEquiped && Input.GetMouseButtonUp(1))
-        {
-            base.WeaponStatus(base.hand); // unaiming
-        }
+        Aiming();
+       
     }
     private void FixedUpdate()
     {
@@ -65,5 +59,15 @@ public class GunShooting : Shooting
         base.ReloadProjectile(reloadTime, ref isReloading);
         if (!isReloading) bulletInMagazine = maxBulletsInMagazine;
     }
-
+    public virtual void Aiming()
+    {
+        if (isEquiped && Input.GetMouseButtonDown(1))
+        {
+            base.WeaponStatus(base.aim); // aiming
+        }
+        if (isEquiped && Input.GetMouseButtonUp(1))
+        {
+            base.WeaponStatus(base.hand); // unaiming
+        }
+    }
 }

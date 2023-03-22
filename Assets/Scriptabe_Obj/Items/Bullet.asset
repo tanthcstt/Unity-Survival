@@ -18,10 +18,13 @@ MonoBehaviour:
   itemName: Bullet
   maxAmount: 3
   itemAmount: 0
-  itemDamage: 1
+  stackable: 1
+  itemDamage: 10
   isShootable: 0
   isDoDamage: 0
   arrows_bullets: []
-  stackable: 1
   isMaterial: 0
   isConsumable: 0
+  isCookable: 0
+  cookedItem: {fileID: 0}
+  price: 0

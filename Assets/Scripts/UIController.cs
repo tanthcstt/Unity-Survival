@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public GameObject itemUI;
     public GameObject tradingUI;
     public GameObject pauseUI;
+
     
     public Camera cam;
     public Transform chestContent;
@@ -54,9 +55,12 @@ public class UIController : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 5f, interactiveLayer))
         {
-            if (!hit.transform.CompareTag("Trader")) return;
-            if (Input.GetKeyDown(interactionKey)) ToggleByKey(tradingUI);
-        }
+
+            if (hit.transform.CompareTag("Trader")) 
+            {
+                if (Input.GetKeyDown(interactionKey)) ToggleByKey(tradingUI);
+            } 
+        } 
         
 
       
@@ -70,22 +74,29 @@ public class UIController : MonoBehaviour
             isUIOn = true;
         }
         else isUIOn = false;
-    } 
+    }
 
     public void ToggleByRaycast(int layerIndex)
     {
         if (layerIndex == LayerMask.NameToLayer("InteractiveObject"))
         {
+
             //open chest UI
             chestUI.SetActive(!chestUI.activeSelf);
-           
+            if (chestUI.activeSelf)
+            {
+                isUIOn = true;
+            }
+            else isUIOn = false;
 
-        } else if (layerIndex == LayerMask.NameToLayer("SpaceShip"))
+
+        }
+        else if (layerIndex == LayerMask.NameToLayer("SpaceShip"))
         {
             repaireShipUI.SetActive(!repaireShipUI.activeSelf);
-         
-        } 
-               
+
+        }
+
     }
 
     public void Notification()

@@ -29,7 +29,7 @@ public class DamageSender :MonoBehaviour
 
     protected virtual void Send(GameObject objToSend)
     {
-        Debug.Log(objToSend);   
+      
         DamageReceiver receiver = objToSend.transform.GetComponentInParent<DamageReceiver>();
        
         if (receiver == null) return;

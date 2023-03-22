@@ -140,6 +140,7 @@ public class PlayerHealth : DamageReceiver
         Debug.Log("- " + damage + " " + gameObject.name);
         if (IsDeath(base.health))
         {
+            UpdateUI(); //make  the hp bar dont have hp when player die
             // player death
             deathCam.SetActive(true);
             deathCam.transform.parent = null;   

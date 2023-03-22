@@ -273,7 +273,7 @@ public class FPP_Interaction : MonoBehaviour
 
     }
 
-    private void HandReset()
+    public void HandReset()
     {
         bool isInHand = false;
         if (itemInHand == null) return;

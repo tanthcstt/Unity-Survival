@@ -30,7 +30,7 @@ public class Projectile :MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (isActive && (collision.gameObject.layer != LayerMask.NameToLayer("Player") && collision.gameObject.layer != LayerMask.NameToLayer("Items")))
+        if (isActive  && collision.gameObject.layer != LayerMask.NameToLayer("Items"))
         {
             SendDamage(collision);
             if (isDamageSent)
@@ -51,7 +51,9 @@ public class Projectile :MonoBehaviour
     {
         if (isActive)
         {
+       
             DamageSender.instance.DoDamage(gameObject.GetComponent<GeneralItemData>().item.itemDamage, collision.collider.gameObject);
+            Debug.Log(collision.collider.gameObject);
             isActive = false;
         }
         isDamageSent = true;

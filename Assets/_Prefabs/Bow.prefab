@@ -45,19 +45,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be6141abd8a4b76449c48276c106fc1e, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be6141abd8a4b76449c48276c106fc1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -139.43585
+      value: 251.68263
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be6141abd8a4b76449c48276c106fc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.85
+      value: 8.99
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be6141abd8a4b76449c48276c106fc1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.95035
+      value: 14.639197
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be6141abd8a4b76449c48276c106fc1e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -300,9 +300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4415b04c2ab78542aa024e529cb8e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingRange: 100
   projectileVelocity: 100
   isEquiped: 0
   projectileType: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!4 &5469733936771829912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be6141abd8a4b76449c48276c106fc1e, type: 3}

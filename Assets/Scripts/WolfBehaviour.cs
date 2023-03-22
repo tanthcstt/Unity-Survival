@@ -11,10 +11,16 @@ public class WolfBehaviour : AnimalsBehaviour
     public float chasingRange;
     public float chasingSpeed = 8f;
     public int damage;
+    public float patrollingSpeed = 1f;
+    public GameObject playerBody;
     public override void Awake()
     {
         base.Awake();   
-        damage = gameObject.GetComponent<BreakableObjData>().generalData.damage;  
+        if (gameObject.GetComponent<BreakableObjData>())
+        {
+            damage = gameObject.GetComponent<BreakableObjData>().generalData.damage;
+        }
+        playerBody = GameObject.Find("FPP_Player/PlayerBody");
     }
     private void Update()
     {
@@ -32,7 +38,7 @@ public class WolfBehaviour : AnimalsBehaviour
 
     public void Patrolling()
     {
-        agent.speed = 3f;
+        agent.speed = patrollingSpeed;
         base.SetTagetPoint(patrollingRange);
         agent.SetDestination(base.targetPoint);
     }
@@ -41,7 +47,7 @@ public class WolfBehaviour : AnimalsBehaviour
         agent.speed = chasingSpeed;
         agent.SetDestination(player.transform.position);
     }
-    public void Attack()
+    public virtual void Attack()
     {   // raycast
         // send damage
         Debug.Log("attack");

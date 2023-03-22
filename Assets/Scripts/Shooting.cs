@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-   
-    public float projectileVelocity = 100f;
+    public float shootingRange;
     protected int amountToCheck = 1;
     public bool isEquiped;
     protected float reloadRunTime;
@@ -48,7 +47,7 @@ public class Shooting : MonoBehaviour
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         /*     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);*/
 
-        rb.velocity = transform.forward * 100f;
+        rb.velocity = transform.forward * shootingRange;
  
         projectile.GetComponent<Projectile>().isActive = true;
        // set projective can do damage

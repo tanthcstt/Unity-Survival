@@ -52,10 +52,15 @@ public class C4Trigger : MonoBehaviour
     }
     public void RemoveItemAfterPlant()
     {
+        
+       
         // remove data from inventory
         c4GeneralData.Clear();
         c4GeneralData.Add(gameObject.GetComponent<GeneralItemData>());
-        ItemFilter.Instance.IsEnoughItems(c4GeneralData);
+        c4GeneralData[0].itemCount = 1;
+        ItemFilter.Instance.IsEnoughItems(c4GeneralData);    
+       
+       
 
     }
     public void Trigger()
