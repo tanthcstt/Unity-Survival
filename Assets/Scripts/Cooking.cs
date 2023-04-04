@@ -15,7 +15,7 @@ public class Cooking : MonoBehaviour
   
     private void Awake()
     {
-        hand = GameObject.Find("FPP_Player/Hand").transform;
+        hand = GameObject.Find("FPP_Player/PlayerBody/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/Hand").transform;
         SetRawFoodList();
       
     }

@@ -1,33 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    Animator animator;
-    private KeyCode walkButton = KeyCode.W;
-  
-    // Start is called before the first frame update
-    void Start()
+    public Rig aimingRig;
+    protected Animator animator;
+    public static PlayerAnimation instance;
+    protected FPP_Interaction playerInteraction;
+    
+    private void Awake()
     {
-        animator = GetComponent<Animator>();
+        playerInteraction = gameObject.GetComponent<FPP_Interaction>();
+        aimingRig.weight = 0;
+        animator = GetComponent<Animator>();   
+    }
+    private void Update()
+    {        
+        if (Input.GetMouseButtonDown(1) && playerInteraction.selectedItemID == 9) AimingToggle(true);  
+        if (playerInteraction.selectedItemID == 9 && Input.GetMouseButtonUp(1)) AimingToggle(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LowAimingToggle(bool state)
     {
-        
-        // Idle ==> walk
-        if (Input.GetKey(walkButton))
+        if (state)
         {
-           ;
-            animator.SetBool("isWalking", true);
-        } else
-        {
-            animator.SetBool("isWalking", false);
+            aimingRig.weight = 1;
         }
-        // Idle ==> jumb
-      
-    
+        else aimingRig.weight = 0;
+        animator.SetBool("aimingLow", state);
+    }
+
+    public void AimingToggle(bool state)
+    {
+        animator.SetBool("isAiming", state);
     }
 }

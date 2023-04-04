@@ -6,25 +6,26 @@ using UnityEngine.UI;
 public class StaminaBar : MonoBehaviour
 {
     public Slider slider;
-
+   
     void Start()
     {
         slider = GetComponent<Slider>();    
     }
 
-    public void SetMaxStamina( float stamina)
+    public void SetMaxStamina( float maxStamina)
     {
-        slider.maxValue = stamina;
-        slider.value = stamina;
+        slider.maxValue = maxStamina;
+        slider.value = maxStamina;
     }
    
     public void SetStamina(float stamina)
     {
+        
         slider.value = stamina;
     }
-    public float GetCurrentStamina()
+/*    public float GetCurrentStamina()
     {
         return slider.value;
-    }
+    }*/
     
 }

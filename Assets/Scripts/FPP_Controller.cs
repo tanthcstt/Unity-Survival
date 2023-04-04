@@ -34,14 +34,14 @@ public class FPP_Controller : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
       
         //character Movement
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         direction = transform.right * horizontal + transform.forward * vertical;
         speed = walk_speed;
-        currentStamina = staminaBar.GetCurrentStamina();
+        currentStamina = gameObject.GetComponent<FPP_Interaction>().currentStamina;
         if (IsGrounded())
         {
             if (Input.GetKeyDown(jumb))

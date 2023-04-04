@@ -1,0 +1,65 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 10.04.2014 11:55:15
+
+newmtl Material__132
+	Ns 0.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka G:\bai tap\bai hoc 3ds\Soldier\Texture\Head.tga
+	map_Kd G:\bai tap\bai hoc 3ds\Soldier\Texture\Head.tga
+	map_bump G:\bai tap\bai hoc 3ds\Soldier\Texture\Head_Normal.tga
+	bump G:\bai tap\bai hoc 3ds\Soldier\Texture\Head_Normal.tga
+
+newmtl Material__130
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka G:\bai tap\bai hoc 3ds\Soldier\Texture\body.tga
+	map_Kd G:\bai tap\bai hoc 3ds\Soldier\Texture\body.tga
+	map_bump G:\bai tap\bai hoc 3ds\Soldier\Texture\body_normal.tga
+	bump G:\bai tap\bai hoc 3ds\Soldier\Texture\body_normal.tga
+
+newmtl Material__131
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka G:\bai tap\bai hoc 3ds\Soldier\Texture\bottom.tga
+	map_Kd G:\bai tap\bai hoc 3ds\Soldier\Texture\bottom.tga
+	map_bump G:\bai tap\bai hoc 3ds\Soldier\Texture\bottom_normal.tga
+	bump G:\bai tap\bai hoc 3ds\Soldier\Texture\bottom_normal.tga
+
+newmtl glasses
+	Ns 0.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka G:\bai tap\bai hoc 3ds\Soldier\Texture\Head.tga
+	map_Kd G:\bai tap\bai hoc 3ds\Soldier\Texture\Head.tga
+	map_d G:\bai tap\bai hoc 3ds\Soldier\Texture\Head.tga

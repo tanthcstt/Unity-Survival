@@ -16,7 +16,7 @@ public class Shooting : MonoBehaviour
     protected List<GeneralItemData> requiredProjectile = new List<GeneralItemData>();
     protected GameObject projectilePrefab;
     protected Transform aim;
-    protected Transform hand;
+    public Transform hand;
     public Camera cam;  
 
 
@@ -72,20 +72,13 @@ public class Shooting : MonoBehaviour
         projectileType = projectilePrefab.GetComponent<GeneralItemData>();
         // aiming transform
         aim = GameObject.Find("FPP_Player/Main Camera/AimPosition").transform;
-        hand = GameObject.Find("FPP_Player/Hand").transform;
+        hand = GameObject.Find("FPP_Player/PlayerBody/metarig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/Hand").transform;
         cam = GameObject.Find("FPP_Player/Main Camera").GetComponent<Camera>();
     }
 
 
-    //weapon status
-    public virtual void WeaponStatus(Transform status) // aiming or normal
-    {
-     
-        this.transform.SetParent(status);
-        this.gameObject.transform.position = status.position;
-        this.gameObject.transform.rotation = status.rotation;
-     
-    }
+
+   
 
     public virtual void ReloadProjectile(float reloadTime, ref bool isReloading)
     {
@@ -96,6 +89,9 @@ public class Shooting : MonoBehaviour
             reloadRunTime = 0;           
         } 
     }
+    public virtual void WeaponStatus(Transform status)
+    {
 
+    }
 
 }

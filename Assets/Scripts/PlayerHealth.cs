@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : DamageReceiver
 {
     [Header("player parameters")]
-    public GameObject deathCam;
+    public GameObject cam;
 
     [Header("cold")]
     public float coldTime;
@@ -51,6 +51,8 @@ public class PlayerHealth : DamageReceiver
         foodSlider = UIFood.GetComponent<Slider>();
         waterSlider = UIWater.GetComponent<Slider>();
 
+        cam = GameObject.Find("FPP_Player/Main Camera");
+
         healthSlider.maxValue = base.maxHealth;
         foodSlider.maxValue = maxHungryTime;
         waterSlider.maxValue = maxThirstyTime;
@@ -62,7 +64,7 @@ public class PlayerHealth : DamageReceiver
         isHungry = false;
         isThirsty = false;
 
-        deathCam.SetActive(false);
+
     }
 
 
@@ -142,8 +144,7 @@ public class PlayerHealth : DamageReceiver
         {
             UpdateUI(); //make  the hp bar dont have hp when player die
             // player death
-            deathCam.SetActive(true);
-            deathCam.transform.parent = null;   
+            cam.transform.parent = null;   
             gameObject.SetActive(false);
            
         }

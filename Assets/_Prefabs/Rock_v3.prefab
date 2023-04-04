@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generalData: {fileID: 11400000, guid: f83f1290f98f75b4a806d18a58838513, type: 2}
-  health: 3
+  health: 10

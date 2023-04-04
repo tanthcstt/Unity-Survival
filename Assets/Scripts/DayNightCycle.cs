@@ -16,7 +16,7 @@ public class DayNightCycle : MonoBehaviour
     private float exposureRuntime;
     private float exposure = 0;
     private float angle = 0f;
-   
+
     private void Start()
     {
       

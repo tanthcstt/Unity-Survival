@@ -10,22 +10,23 @@ using UnityEngine.XR;
 
 public class FPP_Interaction : MonoBehaviour
 {
-    
+
     public int maxHealth = 10;
     public float maxStamina = 100f;
     private int currentHealth;
-    private float currentStamina;
-    private int selectedItemID;
-   
+    public float currentStamina;
+    public int selectedItemID;
+
     public HealthBar healthBar;
     public StaminaBar staminaBar;
     public Camera cam;
-    
+
+
     public LayerMask itemLayer;
     public LayerMask interactiveObject;
 
     public KeyCode interactionKey = KeyCode.F;
-    
+
 
     public GameObject inventory;
     public GameObject pickUpNotification;
@@ -40,10 +41,11 @@ public class FPP_Interaction : MonoBehaviour
     public UIController UIController;
     public Cooking cooking;
     public HelicopterKeyRequire helicopterKey;
+    protected PlayerAnimation playerAnimation;
 
     Rigidbody itemRb;
-  
-   
+
+
     private String[] interactableLayer = { "Items", "InteractiveObject", "SpaceShip", "BreakableObject" };
     private KeyCode[] selectedItem = {
         KeyCode.Alpha1,
@@ -53,8 +55,13 @@ public class FPP_Interaction : MonoBehaviour
         KeyCode.Alpha5,
         KeyCode.Alpha6,
         KeyCode.Alpha7,
-        KeyCode.Alpha8};
+        KeyCode.Alpha8}
+    ;
 
+    private void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+    }
     void Start()
     {
         currentHealth = maxHealth;
@@ -75,6 +82,7 @@ public class FPP_Interaction : MonoBehaviour
         // put item in hotbar list on player hand
         SelectItem();
         HandReset();
+       
         // raycast to breakable item
         BreakObject();
 
@@ -91,11 +99,11 @@ public class FPP_Interaction : MonoBehaviour
        } else if (!(Input.GetKey(KeyCode.LeftShift)) && currentStamina <= maxStamina)
        {
             RefillStamina();
-       } 
+       }
+       // update stamina
+        staminaBar.SetStamina(currentStamina);
 
-      
-       
-       
+
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 5f, LayerMask.GetMask(interactableLayer)))
         {
             UIController.Notification();
@@ -143,6 +151,11 @@ public class FPP_Interaction : MonoBehaviour
             UIController.HideNotification();
         }
 
+        
+       
+     
+
+
     }
     void TakeDamage()
     {
@@ -153,13 +166,13 @@ public class FPP_Interaction : MonoBehaviour
     void StaminaConsuming()
     {
         currentStamina -= .1f;
-        staminaBar.SetStamina(currentStamina);
+       
     }
 
     void RefillStamina()
     {
         currentStamina += 1f;
-        staminaBar.SetStamina(currentStamina);
+       
     }
 
     void PickUpItem(RaycastHit hit)
@@ -180,6 +193,7 @@ public class FPP_Interaction : MonoBehaviour
                 // set selected item id
                 if (InventoryManager.Instance.hotbarList[i] == null)
                 {
+                    itemInHand = null;
                     selectedItemID = -1;
                 } else
                 {
@@ -194,11 +208,13 @@ public class FPP_Interaction : MonoBehaviour
                         if (j == i)
                         {
                             InventoryManager.Instance.hotbarList[j].gameObject.SetActive(true);
-                            InventoryManager.Instance.hotbarList[j].gameObject.transform.position = playerHand.transform.position;
-                            InventoryManager.Instance.hotbarList[j].gameObject.transform.rotation = playerHand.transform.rotation;
                             InventoryManager.Instance.hotbarList[j].gameObject.transform.SetParent(playerHand.transform);
                             itemRb = InventoryManager.Instance.hotbarList[i].gameObject.GetComponent<Rigidbody>();
                             if (itemRb != null) itemRb.isKinematic = true;
+                            InventoryManager.Instance.hotbarList[j].gameObject.transform.localPosition = Vector3.zero;
+                            InventoryManager.Instance.hotbarList[j].gameObject.transform.rotation = playerHand.transform.rotation;
+                          
+                           
                                 // consumable obj
                                 if (InventoryManager.Instance.hotbarList[j].gameObject.GetComponent<GeneralItemData>().item.isConsumable)
                             {
@@ -215,8 +231,10 @@ public class FPP_Interaction : MonoBehaviour
                                 EnableDoDamageItem(InventoryManager.Instance.hotbarList[j]);
                             }
 
-                                
-                         
+                        
+                          
+                           
+
                         }
                         else
                         {
@@ -233,9 +251,14 @@ public class FPP_Interaction : MonoBehaviour
 
                         }
                     } 
+    
                 }
-                // 
-               
+                // play animaiton
+                if (selectedItemID == 9)
+                {
+                    playerAnimation.LowAimingToggle(true);
+                } else playerAnimation.LowAimingToggle(false);  
+      
             }
         }
 
